@@ -1,0 +1,417 @@
+/* ==========================================================================
+   1. GLOBAL RESET & BASE THEME (Cyberpunk-Japanese Palette)
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: #0d0b14;
+    color: #f1f1f6;
+    overflow-x: hidden;
+    /* Transisi halus saat ganti background karakter di Dashboard */
+    transition: background 0.5s ease;
+    padding-bottom: 60px;
+}
+
+/* ==========================================================================
+   2. GLASSMORPHISM NAVIGATION BAR (iOS Style)
+   ========================================================================== */
+.glass-nav {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1000px;
+    height: 60px;
+    background: rgba(25, 20, 35, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    display: table;
+    table-layout: fixed;
+    z-index: 1000;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.nav-item {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 11pt;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: #bb86fc;
+    text-shadow: 0 0 10px rgba(187, 134, 252, 0.5);
+}
+
+/* ==========================================================================
+   3. GENERAL LAYOUT & COMPONENTS
+   ========================================================================== */
+.container {
+    max-width: 1100px;
+    margin: 100px auto 30px auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+p {
+    line-height: 1.6;
+    color: #c5c2d1;
+    font-size: 10.5pt;
+    margin-bottom: 15px;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   4. PAGE: DASHBOARD (Dynamic Backgrounds & Scroller)
+   ========================================================================== */
+/* Background Dinamis (Dipicu oleh JavaScript) */
+
+/* ==========================================================================
+   4. PAGE: DASHBOARD (Dynamic Backgrounds & Aura Effects)
+   ========================================================================== */
+/* 1. Naikin posisi container (teks & kartu) biar nggak ketutup aura */
+/* ==========================================================================
+   4. PAGE: DASHBOARD (Dynamic Backgrounds, Images & Aura Effects)
+   ========================================================================== */
+.container {
+    position: relative;
+    z-index: 2; /* Pastikan konten teks dan kartu tetap di atas */
+}
+
+/* --- LAYER 1: BASE BODY (Gambar Background) --- */
+#body-bg {
+    position: relative;
+    min-height: 100vh;
+    background-image: var(--bg-img);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background-image 1s ease;
+}
+
+/* --- LAYER 2: GRADIENT (Kaca Warna Semi-Transparan) --- */
+#body-bg::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    
+    /* OPACITY INI KUNCINYA! 
+       0.85 artinya warnanya pekat 85%, gambarnya tembus 15%. 
+       Kalau gambar lu dirasa kurang jelas, turunin jadi 0.7 atau 0.6 */
+    opacity: 0.01; 
+    
+    background: var(--bg-gradient, linear-gradient(45deg, #0d0b14, #1a1625)) !important;
+    background-size: 200% 200% !important;
+    animation: gradientShift 10s ease infinite !important;
+    transition: background 1s ease;
+}
+
+/* --- LAYER 3: AURA VIGNETTE (Cahaya Pinggir Layar) --- */
+#body-bg::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1; 
+    box-shadow: inset 0 0 150px var(--aura-color, rgba(0,0,0,0));
+    transition: box-shadow 0.8s ease;
+    animation: auraPulse 2.5s infinite alternate;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+@keyframes auraPulse {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* =========================================
+   5. PEMBAGIAN KATEGORI GAMBAR & TEMA KARAKTER
+   ========================================= */
+
+/* --- LOGIKA GAMBAR BACKGROUND --- */
+
+/* KUBUS 1: KORPS HASHIRA & KARAKTER UTAMA */
+#body-bg.theme-default, #body-bg.theme-kamado, #body-bg.theme-kamaboko, 
+#body-bg.theme-gyomei, #body-bg.theme-sanemi, #body-bg.theme-muichiro, 
+#body-bg.theme-giyu, #body-bg.theme-obanai, #body-bg.theme-rengoku, 
+#body-bg.theme-mitsuri, #body-bg.theme-tengen, #body-bg.theme-shinobu, #body-bg.theme-kanao {
+    /* GANTI 'bg-korps.jpg' DENGAN NAMA FILE/PATH GAMBAR LU */
+    --bg-img: url('bg1.jpg'); 
+}
+
+/* KUBUS 2: IBLIS BULAN & MUZAN */
+#body-bg.theme-muzan, #body-bg.theme-kokushibo, #body-bg.theme-doma, 
+#body-bg.theme-akaza, #body-bg.theme-hantengu, #body-bg.theme-gyokko, 
+#body-bg.theme-gyutaro, #body-bg.theme-nakime, #body-bg.theme-enmu {
+    /* GANTI 'bg-iblis.jpg' DENGAN NAMA FILE/PATH GAMBAR LU */
+    --bg-img: url('bg2.jpg'); 
+}
+
+/* --- LOGIKA WARNA GRADIENT & AURA --- */
+#body-bg.theme-default { --bg-gradient: linear-gradient(45deg, #0d0b14, #1a1625); --aura-color: rgba(255, 255, 255, 0.05); }
+
+/* UTAMA */
+#body-bg.theme-kamado { --bg-gradient: linear-gradient(45deg, #2a0808, #0b1a20, #3a0d1b); --aura-color: rgba(255, 80, 80, 0.6); }
+#body-bg.theme-kamaboko { --bg-gradient: linear-gradient(45deg, #1f1a00, #0a1525); --aura-color: rgba(255, 200, 50, 0.5); }
+
+/* HASHIRA */
+#body-bg.theme-gyomei { --bg-gradient: linear-gradient(45deg, #262626, #141414); --aura-color: rgba(180, 180, 180, 0.5); }
+#body-bg.theme-sanemi { --bg-gradient: linear-gradient(45deg, #0d2112, #18331d); --aura-color: rgba(100, 255, 120, 0.4); }
+#body-bg.theme-muichiro { --bg-gradient: linear-gradient(45deg, #0f1d2b, #1d3547); --aura-color: rgba(150, 220, 255, 0.5); }
+#body-bg.theme-giyu { --bg-gradient: linear-gradient(45deg, #020a1a, #002244); --aura-color: rgba(50, 150, 255, 0.6); }
+#body-bg.theme-obanai { --bg-gradient: linear-gradient(45deg, #140d1a, #241a2e); --aura-color: rgba(160, 80, 220, 0.4); }
+#body-bg.theme-rengoku { --bg-gradient: linear-gradient(45deg, #330000, #551100); --aura-color: rgba(255, 100, 0, 0.7); }
+#body-bg.theme-mitsuri { --bg-gradient: linear-gradient(45deg, #2e101f, #401b2f); --aura-color: rgba(255, 150, 200, 0.5); }
+#body-bg.theme-tengen { --bg-gradient: linear-gradient(45deg, #21041c, #381231); --aura-color: rgba(255, 215, 0, 0.5); }
+#body-bg.theme-shinobu { --bg-gradient: linear-gradient(45deg, #120024, #26004d); --aura-color: rgba(180, 80, 255, 0.6); }
+#body-bg.theme-kanao { --bg-gradient: linear-gradient(45deg, #241421, #362232); --aura-color: rgba(255, 180, 210, 0.4); }
+
+/* IBLIS BULAN */
+#body-bg.theme-muzan { --bg-gradient: linear-gradient(45deg, #1a0000, #000000, #260000); --aura-color: rgba(255, 0, 0, 0.8); }
+#body-bg.theme-kokushibo { --bg-gradient: linear-gradient(45deg, #17001a, #2a000d); --aura-color: rgba(200, 20, 60, 0.7); }
+#body-bg.theme-doma { --bg-gradient: linear-gradient(45deg, #051414, #0f2b2b); --aura-color: rgba(120, 255, 255, 0.5); }
+#body-bg.theme-akaza { --bg-gradient: linear-gradient(45deg, #171a2b, #2b1426); --aura-color: rgba(255, 50, 150, 0.6); }
+#body-bg.theme-hantengu { --bg-gradient: linear-gradient(45deg, #1a1a1a, #260000); --aura-color: rgba(220, 50, 50, 0.5); }
+#body-bg.theme-gyokko { --bg-gradient: linear-gradient(45deg, #001f1f, #003d3d); --aura-color: rgba(80, 220, 160, 0.5); }
+#body-bg.theme-gyutaro { --bg-gradient: linear-gradient(45deg, #122412, #051205); --aura-color: rgba(120, 255, 80, 0.5); }
+#body-bg.theme-nakime { --bg-gradient: linear-gradient(45deg, #241500, #140b00); --aura-color: rgba(220, 160, 60, 0.5); }
+#body-bg.theme-enmu { --bg-gradient: linear-gradient(45deg, #140b1a, #0b1424); --aura-color: rgba(160, 120, 220, 0.5); }
+
+
+/* ==========================================================================
+   MESIN OVERLAY KEKUATAN (GIF BLEND MODE)
+   ========================================================================== */
+#power-overlay {
+    position: fixed;
+    top: 0; left: 0; 
+    width: 100vw; height: 100vh;
+    pointer-events: none; /* Biar tombol di bawahnya tetep bisa diklik */
+    z-index: 1; /* Posisinya di atas background, tapi di bawah teks konten */
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Defaultnya transparan (nggak ada efek) */
+    opacity: 0;
+    transition: opacity 1s ease, background-image 1s ease;
+}
+
+/* ---------------------------------------------------
+   PANGGIL EFEK BERDASARKAN KARAKTER
+   --------------------------------------------------- */
+
+/* 1. KELUARGA KAMADO (Api Hinokami) */
+#body-bg.theme-kamado #power-overlay {
+    background-image: url('../efek/tanjiro.gif');
+    mix-blend-mode: screen; /* Ngilangin background hitam dari GIF */
+    opacity: 1; /* Atur ketebalan efeknya (0.1 - 1) */
+}
+
+/* 2. ZENITSU & INOSUKE (Petir Menyambar) */
+#body-bg.theme-kamaboko #power-overlay {
+    background-image: url('../efek/petir.gif');
+    mix-blend-mode: color-dodge; /* Petir bakal kelihatan lebih terang/menyala */
+    opacity: 1;
+}
+
+/* 3. shinobu */
+#body-bg.theme-shinobu #power-overlay,
+#body-bg.theme-kanao #power-overlay {
+    background-image: url('../efek/bunga.gif');
+    mix-blend-mode: screen;
+    opacity: 1;
+}
+
+/* 4. rengoku */
+#body-bg.theme-rengoku #power-overlay {
+    background-image: url('../efek/apii.gif');
+    mix-blend-mode: screen;
+    opacity: 1;
+}
+
+#body-bg.theme-giyu #power-overlay {
+    background-image: url('../efek/air.gif');
+    mix-blend-mode: screen;
+    opacity: 1;
+}
+
+#body-bg.theme-mitsuri #power-overlay {
+    background-image: url('../efek/love.gif');
+    mix-blend-mode: screen;
+    opacity: 1;
+}
+
+/* 5. MUZAN  */
+#body-bg.theme-muzan #power-overlay {
+    background-image: url('../efek/muzan.gif');
+    
+    /* Pakai mode 'multiply' kalau lu pakai GIF dengan background PUTIH 
+       Pakai mode 'screen' kalau lu pakai GIF dengan background HITAM */
+    mix-blend-mode: screen; 
+    
+    opacity: 1;
+}
+
+/* 6. DOMA (Badai Salju) */
+#body-bg.theme-sanemi #power-overlay,
+ #body-bg.theme-muichiro #power-overlay,
+ #body-bg.theme-obanai #power-overlay,
+ #body-bg.theme-gyomei #power-overlay,
+ #body-bg.theme-tengen #power-overlay{
+    background-image: url('../efek/salju.gif');
+    mix-blend-mode: screen;
+    opacity: 1;
+}
+
+#body-bg.theme-doma #power-overlay,
+#body-bg.theme-gyokko #power-overlay,
+#body-bg.theme-gyutaro #power-overlay,
+#body-bg.theme-kokushibo #power-overlay,
+#body-bg.theme-nakime #power-overlay,
+#body-bg.theme-hantengu #power-overlay,
+#body-bg.theme-akaza #power-overlay,
+#body-bg.theme-enmu #power-overlay {
+    background-image: url('../efek/devil.gif');
+    mix-blend-mode: screen;
+    opacity: 1;
+}
+
+/* =========================================
+   6. LAYOUT DASHBOARD
+   ========================================= */
+.dashboard-layout { display: table; width: 100%; table-layout: fixed; }
+.sidebar-chars { display: table-cell; width: 30%; vertical-align: top; padding-right: 20px; }
+.story-scroller { display: table-cell; width: 70%; vertical-align: top; background: rgba(10, 8, 15, 0.6); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; transition: all 0.5s ease; max-height: 500px; overflow-y: auto; }
+
+.char-btn {
+    display: block; width: 100%; padding: 12px 15px; margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px; color: #fff; text-align: left; font-size: 10.5pt;
+    cursor: pointer; transition: all 0.3s ease;
+}
+.char-btn:hover { background: rgba(187, 134, 252, 0.1); border-color: #bb86fc; padding-left: 20px; }
+
+
+/* ==========================================================================
+   5. PAGE: GALLERY (Pinterest Masonry Grid)
+   ========================================================================== */
+.gallery-grid { column-count: 3; column-gap: 20px; width: 100%; }
+.gallery-item {
+    display: inline-block; width: 100%; margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px; overflow: hidden; transition: transform 0.3s ease;
+}
+.gallery-item:hover { transform: translateY(-5px); border-color: #bb86fc; }
+.gallery-placeholder { width: 100%; position: relative; }
+.gallery-desc { padding: 12px; font-size: 9.5pt; }
+.gallery-tag { display: inline-block; background: rgba(187, 134, 252, 0.2); color: #bb86fc; padding: 2px 8px; border-radius: 20px; font-size: 8pt; margin-top: 5px; }
+
+/* ==========================================================================
+   6. PAGE: STREAMING (Video Cards)
+   ========================================================================== */
+.stream-grid { display: table; width: 100%; border-collapse: separate; border-spacing: 20px; }
+.stream-row { display: table-row; }
+.stream-card {
+    display: table-cell; width: 50%; background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px;
+    padding: 0; overflow: hidden; vertical-align: top;
+}
+.video-box { width: 100%; height: 200px; background: #110e1a; position: relative; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.play-icon { font-size: 32pt; color: rgba(255,255,255,0.4); cursor: pointer; transition: color 0.3s; }
+.play-icon:hover { color: #bb86fc; }
+.stream-info { padding: 15px; }
+
+/* ==========================================================================
+   7. PAGE: FORUM (WhatsApp Chat Interface)
+   ========================================================================== */
+.forum-box {
+    background: rgba(15, 12, 22, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px; height: 500px; overflow: hidden; position: relative;
+}
+.chat-header { background: rgba(255, 255, 255, 0.03); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 15px; font-weight: bold; }
+.chat-logs { padding: 20px; height: 380px; overflow-y: auto; }
+.chat-bubble { max-width: 70%; padding: 12px 15px; border-radius: 15px; margin-bottom: 15px; font-size: 10pt; line-height: 1.4; }
+.chat-bubble.incoming { background: rgba(255, 255, 255, 0.05); border-bottom-left-radius: 2px; float: left; clear: both; }
+.chat-bubble.outgoing { background: rgba(187, 134, 252, 0.15); border: 1px solid rgba(187, 134, 252, 0.3); border-bottom-right-radius: 2px; float: right; clear: both; color: #e2d5f5; }
+.chat-sender { font-size: 8pt; color: #bb86fc; margin-bottom: 4px; font-weight: bold; }
+
+.chat-input-area { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(20, 16, 28, 0.9); padding: 12px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+.chat-input-table { display: table; width: 100%; }
+.chat-input-cell { display: table-cell; vertical-align: middle; }
+.chat-input-cell.text-field { width: 85%; }
+.chat-input-cell.btn-field { width: 15%; text-align: right; }
+.chat-input { width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 10px 15px; border-radius: 20px; color: #fff; font-size: 10pt; outline: none; }
+.chat-submit { background: #bb86fc; color: #0d0b14; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+
+/* ==========================================================================
+   8. PAGE: ACCOUNT (Forms & Settings)
+   ========================================================================== */
+.account-layout { display: table; width: 100%; }
+.profile-sidebar { display: table-cell; width: 35%; vertical-align: top; padding-right: 20px; }
+.settings-form { display: table-cell; width: 65%; vertical-align: top; }
+.avatar-circle {
+    width: 120px; height: 120px; border-radius: 60px;
+    background: linear-gradient(45deg, #bb86fc, #3700b3);
+    margin: 0 auto 15px auto; display: flex; align-items: center; justify-content: center;
+    font-size: 32pt; font-weight: bold; box-shadow: 0 0 20px rgba(187, 134, 252, 0.3);
+}
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 9.5pt; color: rgba(255, 255, 255, 0.6); margin-bottom: 8px; }
+.form-group input, .form-group select {
+    width: 100%; background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 10px;
+    color: #fff; font-size: 10pt; outline: none;
+}
+.btn-primary {
+    background: linear-gradient(90deg, #bb86fc, #985eff); color: #0d0b14; border: none;
+    padding: 12px 25px; border-radius: 10px; font-weight: bold; cursor: pointer;
+    box-shadow: 0 4px 15px rgba(187, 134, 252, 0.3);
+}
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+.footer-tag { text-align: center; font-size: 8.5pt; color: rgba(255, 255, 255, 0.3); margin-top: 5px; }
+
+
+
+
+
+
+
