@@ -28,7 +28,13 @@ session_start();
         }
     </style>
 </head>
-<body class="theme-default">
+<body class="theme-default" style="
+    background-image: url('img/bg0.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+">
 
     <div class="auth-wrapper">
         <div class="glass-card auth-card">
