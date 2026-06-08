@@ -28,7 +28,13 @@ $ambil_chat = mysqli_query($koneksi, $query_chat);
     <title>Wisteria Hub - Komunitas</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="theme-default">
+<body class="theme-default" style="
+    background-image: url('img/bg4.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+">
 
     <?php include('includes/navbar.php'); ?>
 
@@ -44,19 +50,49 @@ $ambil_chat = mysqli_query($koneksi, $query_chat);
                 <?php 
                 // 4. Looping data langsung dari database
                 while ($chat = mysqli_fetch_assoc($ambil_chat)) { 
-                    // Logika PHP untuk menentukan posisi gelembung chat (Kanan/Kiri)
-                    // Jika user_id di chat sama dengan user_id kita yang sedang login, berarti 'outgoing'
+                    // Logika penempatan bubble chat (Kanan/Kiri)
                     $tipe = ($chat['user_id'] == $_SESSION['user_id']) ? 'outgoing' : 'incoming';
                 ?>
-                    <div class="chat-bubble <?php echo $tipe; ?>">
+                    <div class="chat-bubble <?php echo $tipe; ?>" style="position: relative; padding-right: 35px;">
+                        
                         <div class="chat-sender">
                             <?php echo $chat['username']; ?>
-                            <!-- Tanggal pakai fungsi kustom buat dapat poin -->
                             <span style="font-size: 7.5pt; color: rgba(255,255,255,0.4); font-weight: normal; margin-left: 5px;">
                                 <?php echo formatTanggalId($chat['created_at']); ?>
                             </span>
                         </div>
+                        
                         <?php echo htmlspecialchars($chat['isi_pesan']); ?>
+
+                       <?php 
+                        // ==========================================================
+                        // LOGIKA TOMBOL HAPUS & EDIT
+                        // ==========================================================
+                        if ($_SESSION['role'] == 'admin' || $_SESSION['user_id'] == $chat['user_id']) { 
+                        ?>
+                            <div style="position: absolute; top: 10px; right: 10px; display: flex; gap: 8px;">
+                                
+                                <?php 
+                                // Tombol EDIT (KHUSUS PEMILIK PESAN)
+                                if ($_SESSION['user_id'] == $chat['user_id']) { 
+                                    // Bersihkan kutip biar JS tidak error saat nangkep teks
+                                    $pesan_aman = htmlspecialchars($chat['isi_pesan'], ENT_QUOTES);
+                                ?>
+                                    <button onclick="editPesan('<?php echo $chat['id']; ?>', '<?php echo $pesan_aman; ?>')" style="background: none; border: none; color: #ffeb3b; font-size: 11pt; cursor: pointer; padding: 0;" title="Edit Pesan">
+                                        ✏️
+                                    </button>
+                                <?php } ?>
+
+                                <form action="config/crud_forum.php" method="POST" style="margin: 0;">
+                                    <input type="hidden" name="id_pesan" value="<?php echo $chat['id']; ?>">
+                                    <button type="submit" name="hapus_pesan" onclick="return confirm('Hapus pesan ini dari arsip?');" style="background: none; border: none; color: #ff4d4d; font-size: 11pt; cursor: pointer; padding: 0;" title="Hapus Pesan">
+                                        🗑️
+                                    </button>
+                                </form>
+
+                            </div>
+                        <?php } ?>
+
                     </div>
                 <?php } ?>
             </div>
@@ -79,13 +115,37 @@ $ambil_chat = mysqli_query($koneksi, $query_chat);
     </div>
 
     <footer class="footer-tag">
-        Responsi Prak Pemweb Kelompok © 2026 | PHP Native Evolution Concept
+        Responsi Prak Pemweb Shift C - 2026 
     </footer>
 
     <script>
         // Auto-scroll selalu ke chat paling bawah
         var chatBox = document.getElementById('chat-box');
         chatBox.scrollTop = chatBox.scrollHeight;
+    </script>
+
+
+
+<form id="form_edit" action="config/crud_forum.php" method="POST" style="display: none;">
+        <input type="hidden" name="id_edit" id="edit_id">
+        <input type="hidden" name="pesan_edit" id="edit_pesan">
+        <input type="hidden" name="proses_edit" value="1">
+    </form>
+
+    <script>
+        // Fungsi untuk mengedit pesan pakai Prompt bawaan browser
+        function editPesan(id, pesanLama) {
+            let pesanBaru = prompt("Edit pesan komunitas Anda:", pesanLama);
+            
+            // Jika user mengisi pesan baru dan tidak memencet 'Cancel'
+            if (pesanBaru !== null && pesanBaru.trim() !== "") {
+                // Masukkan data ke form tersembunyi
+                document.getElementById('edit_id').value = id;
+                document.getElementById('edit_pesan').value = pesanBaru;
+                // Kirim (Submit) form-nya secara otomatis
+                document.getElementById('form_edit').submit();
+            }
+        }
     </script>
 </body>
 </html>
