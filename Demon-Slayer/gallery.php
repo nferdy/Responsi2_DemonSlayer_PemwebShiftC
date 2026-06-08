@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once 'config/koneksii.php'; // Wajib panggil database
+require_once 'config/koneksi.php'; // Wajib panggil database
 
 $page = 'gallery'; 
 
