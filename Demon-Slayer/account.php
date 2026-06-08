@@ -1,7 +1,7 @@
 <?php 
 session_start();
-require_once 'config/koneksi.php';
-require_once 'config/functions.php';
+require_once 'config/koneksii.php';
+require_once 'config/functionss.php';
 
 // Keamanan: Tendang ke login kalau belum masuk
 if (!isset($_SESSION['user_id'])) {
