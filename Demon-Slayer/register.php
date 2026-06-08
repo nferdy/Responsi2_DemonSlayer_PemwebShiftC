@@ -24,7 +24,13 @@ session_start();
         }
     </style>
 </head>
-<body class="theme-default">
+<body class="theme-default" style="
+    background-image: url('img/bg00.jpeg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+">
 
     <div class="auth-wrapper">
         <div class="glass-card auth-card">
@@ -59,6 +65,17 @@ session_start();
                     </select>
                 </div>
                 
+<!--
+                <div class="form-group">
+                    <label style="color: #fff; margin-bottom: 5px; display: block;">Pilih Pangkat (Role):</label>
+                    <select name="role" required style="width: 100%; padding: 10px; border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); margin-bottom: 15px;">
+                        <option value="user" style="color: #000;">Mizunoto (Prajurit Baru)</option>
+                        <option value="admin" style="color: #000;">Hashira (Admin)</option>
+                    </select>
+                </div>
+-->
+
+
                 <button type="submit" name="register_btn" class="btn-primary" style="width: 100%; margin-top: 10px;">Daftar Sekarang</button>
             </form>
             
