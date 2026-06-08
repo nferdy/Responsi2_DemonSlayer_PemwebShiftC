@@ -1,8 +1,8 @@
 <?php 
 // 1. Mulai Session & Panggil File Config
 session_start();
-require_once 'config/koneksi.php';
-require_once 'config/functions.php'; // Kita pakai fungsi tanggal dari sini
+require_once 'config/koneksii.php';
+require_once 'config/functionss.php'; // Kita pakai fungsi tanggal dari sini
 
 // 2. Keamanan: Cek apakah user sudah login. Jika belum, lempar ke login!
 if (!isset($_SESSION['user_id'])) {
