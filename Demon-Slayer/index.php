@@ -1,5 +1,5 @@
 <?php 
-// Variabel ini memberi tahu navbar.php bahwa kita sedang berada di halaman Dashboard
+// p p apaa
 $page = 'dashboard'; 
 ?>
 <!DOCTYPE html>
