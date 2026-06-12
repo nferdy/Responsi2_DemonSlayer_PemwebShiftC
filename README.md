@@ -76,7 +76,7 @@ bahkan untuk domain webnya sy costum sendiri, agar menjadi definisi web demon-sl
 
 
 
-##PENTING
+## PENTING
 jika ingin masuk sebagai user pada umumnya cukup isi bagian registrasi sebagaimana buat akun bebas (username pakai spasi gpp), setelah bikin akan kembali ke halaman login(buat memastikan dan mengkonfirmasi akun yg dibuat)
 
 namun jika ingin masuk sebagai ADMIN dan mencoba mengdit, upload, hapus dll sebagaimana konsep CRUD, silahkan
