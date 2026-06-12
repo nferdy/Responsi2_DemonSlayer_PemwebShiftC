@@ -68,12 +68,18 @@ halaman ini juga si admin punya hak untuk mengatur tata letak masing-masing gamb
 
 ## FUNFACT
 web sy ini sudah mengimplementasikan semua rules berdasarkan ketentuan responsi
-mulai dari CRUD, Session, PHP, HTML, JS, CSS, DATABASE, HOSTING, verifikasi password minimal 8, notif konfirmasi, mengkhususkan upload gambar hanya png,jpg,jpeg dan lain lain..
+mulai dari CRUD, Session, PHP, HTML, JS, CSS, DATABASE, HOSTING, verifikasi password minimal 8, notif konfirmasi, mengkhususkan upload gambar hanya png,jpg,jpeg dan lain lain..  (semua data yg akan di upload, baik gambar, chat, link, dll akan masuk ke database sebagaimana website semestinya)
 bahkan untuk domain webnya sy costum sendiri, agar menjadi definisi web demon-slayer yang sempurna sebagaimana para waifu yang ada di anime-nya
 <img width="959" height="475" alt="image" src="https://github.com/user-attachments/assets/3612e935-7eda-4be7-a48a-21acf2d8c663" />
 
 
 
 
+##PENTING
+jika ingin masuk sebagai user pada umumnya cukup isi bagian registrasi sebagaimana buat akun bebas (username pakai spasi gpp), setelah bikin akan kembali ke halaman login(buat memastikan dan mengkonfirmasi akun yg dibuat)
 
+namun jika ingin masuk sebagai ADMIN dan mencoba mengdit, upload, hapus dll sebagaimana konsep CRUD, silahkan
+masuk ke akun ini
+username: real admin
+password: password
 
