@@ -12,7 +12,7 @@ akan ada tampilan halaman login seperti web pada umumnya, jikalau belum punya ak
 <img width="959" height="473" alt="Screenshot 2026-06-12 095415" src="https://github.com/user-attachments/assets/e493d8d4-978a-46ef-964d-a233394b2c15" />
 
 2. Halaman Dashboard (ensiklopedia interaktif)
-berisi penjelasan story, dan jika opsi karakter disebelah kiri ditekan, akan muncul efek memukau, indah, keren pokoke berdasarkan elemen/kekuatan masing masing karakter &  villain/iblis
+berisi penjelasan story, dan jika opsi karakter disebelah kiri ditekan, akan muncul efek memukau, indah, dan keren pokoke berdasarkan elemen/kekuatan masing masing karakter &  villain/iblis
 <img width="959" height="473" alt="Screenshot 2026-06-12 100014" src="https://github.com/user-attachments/assets/761153a9-5766-4752-9f11-9eb62cc98b01" />
 <img width="959" height="479" alt="Screenshot 2026-06-12 100056" src="https://github.com/user-attachments/assets/d5295ce0-f4f0-4bd4-8b56-c4373236d862" />
 <img width="959" height="475" alt="Screenshot 2026-06-12 100132" src="https://github.com/user-attachments/assets/515dcb37-f0e9-472b-8f53-b87cdcf9dcc7" />
