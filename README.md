@@ -14,17 +14,17 @@ akan ada tampilan halaman login seperti web pada umumnya, jikalau belum punya ak
 2. Halaman Dashboard (ensiklopedia interaktif)
 berisi penjelasan story, dan jika opsi karakter disebelah kiri ditekan, akan muncul efek memukau, indah, dan keren pokoke berdasarkan elemen/kekuatan masing masing karakter &  villain/iblis
 <img width="959" height="470" alt="Screenshot 2026-06-12 095620" src="https://github.com/user-attachments/assets/5191d100-2a15-494c-8998-ffb6dd6c87f1" />
+<img width="959" height="473" alt="Screenshot 2026-06-12 095640" src="https://github.com/user-attachments/assets/bff61c0b-5459-444c-b1c6-9431e62c952f" />
+<img width="959" height="471" alt="Screenshot 2026-06-12 095704" src="https://github.com/user-attachments/assets/82920802-4eb8-4836-beeb-3b6f78e18f5c" />
+<img width="959" height="476" alt="Screenshot 2026-06-12 095735" src="https://github.com/user-attachments/assets/79e290f7-75ab-45a0-8c6b-d40da0cca97b" />
+<img width="959" height="475" alt="Screenshot 2026-06-12 095902" src="https://github.com/user-attachments/assets/0073b97b-5657-47ec-9df7-4c328dcad6a0" />
+<img width="959" height="470" alt="Screenshot 2026-06-12 095953" src="https://github.com/user-attachments/assets/53dd4b66-cb8b-47c1-aca0-7675e168c2e3" />
 <img width="959" height="473" alt="Screenshot 2026-06-12 100014" src="https://github.com/user-attachments/assets/761153a9-5766-4752-9f11-9eb62cc98b01" />
 <img width="959" height="479" alt="Screenshot 2026-06-12 100056" src="https://github.com/user-attachments/assets/d5295ce0-f4f0-4bd4-8b56-c4373236d862" />
 <img width="959" height="475" alt="Screenshot 2026-06-12 100132" src="https://github.com/user-attachments/assets/515dcb37-f0e9-472b-8f53-b87cdcf9dcc7" />
 <img width="959" height="476" alt="Screenshot 2026-06-12 100200" src="https://github.com/user-attachments/assets/33fe3bb5-d045-4d11-8fa4-9751a64cab7d" />
 <img width="959" height="476" alt="Screenshot 2026-06-12 100345" src="https://github.com/user-attachments/assets/e81f64ea-2663-41b7-9d58-13de73a3a031" />
 <img width="959" height="474" alt="Screenshot 2026-06-12 100509" src="https://github.com/user-attachments/assets/da6a3a43-aed8-4291-8806-c8cb46e05abf" />
-<img width="959" height="473" alt="Screenshot 2026-06-12 095640" src="https://github.com/user-attachments/assets/bff61c0b-5459-444c-b1c6-9431e62c952f" />
-<img width="959" height="471" alt="Screenshot 2026-06-12 095704" src="https://github.com/user-attachments/assets/82920802-4eb8-4836-beeb-3b6f78e18f5c" />
-<img width="959" height="476" alt="Screenshot 2026-06-12 095735" src="https://github.com/user-attachments/assets/79e290f7-75ab-45a0-8c6b-d40da0cca97b" />
-<img width="959" height="475" alt="Screenshot 2026-06-12 095902" src="https://github.com/user-attachments/assets/0073b97b-5657-47ec-9df7-4c328dcad6a0" />
-<img width="959" height="470" alt="Screenshot 2026-06-12 095953" src="https://github.com/user-attachments/assets/53dd4b66-cb8b-47c1-aca0-7675e168c2e3" />
 
 
 3. Halaman Gallery
